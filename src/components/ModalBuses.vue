@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="busesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
             <div class="modal-header">
@@ -21,7 +21,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="bus in filteredBuses" :key="bus._id">
-                            <td>{{ bus.nome }}</td>
+                            <td><a @click="getMapsLink(bus.nome)">{{ bus.nome }}</a></td>
                             <td>{{ bus.linha }}</td>
                             <td>{{ bus.tipo }}</td>
                         </tr>
@@ -51,7 +51,7 @@
 import { getFirstPage, getPage } from '../services/bus'
 
 export default {
-    name: 'Modal',
+    name: 'ModalBuses',
     data() {
         return {
             buses: [],
@@ -86,6 +86,10 @@ export default {
                 }
             })
         },
+        getMapsLink(name) {
+            this.$refs.push('www.google.com.br/maps/place/' + name)
+            console.log(name)
+        }
     },
     created() {
         getFirstPage().then((res) => {

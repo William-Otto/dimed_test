@@ -7,10 +7,10 @@
 
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Notícias</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Preços</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Perguntas Frequentes</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Sobre nós</a></li>
       </ul>
     </header>
   </div>

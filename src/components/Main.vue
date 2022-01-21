@@ -5,25 +5,31 @@
                 <img src="@/assets/transporte-publico.png" class="d-block mx-lg-auto img-fluid" alt="Transporte Público" width="400" height="200" loading="lazy">
             </div>
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">Encontre a linha e horário</h1>
-                <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                <h1 class="display-5 fw-bold lh-1 mb-3">Encontre sua linha de ônibus ou lotação</h1>
+                <p class="lead">
+                    Encontre rapidamente a linha de ônibus ou lotação desejada na cidade de Porto Alegre-RS com apenas alguns cliques.
+                    Gostaria de obter mais informações? Ligue: (54)98400-0540
+                </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Onibus</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Lotação</button>
+                <button data-bs-toggle="modal" data-bs-target="#busesModal" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Onibus</button>
+                <button data-bs-toggle="modal" data-bs-target="#allotmentsModal" type="button" class="btn btn-outline-secondary btn-lg px-4">Lotação</button>
                 </div>
             </div>
-            <Modal />
+            <ModalBuses />
+            <ModalAllotments />
         </div>
     </div>
 </template>
 
 <script>
-import Modal from './Modal.vue'
+import ModalBuses from './ModalBuses.vue'
+import ModalAllotments from './ModalAllotments.vue'
 
 export default {
     name: 'Main',
     components: {
-        Modal
+        ModalBuses,
+        ModalAllotments
     }
 }
 </script>
