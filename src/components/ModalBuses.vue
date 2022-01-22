@@ -11,36 +11,32 @@
                 <datalist id="datalistOptions">
 
                 </datalist>
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
+                            <th scope="col">Nome </th>
                             <th scope="col">Linha</th>
                             <th scope="col">Tipo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="bus in filteredBuses" :key="bus._id">
-                            <td><a @click="getMapsLink(bus.nome)">{{ bus.nome }}</a></td>
+                            <td><a @click="goToMaps(bus.nome)" type="button">{{ bus.nome }}</a></td>
                             <td>{{ bus.linha }}</td>
                             <td>{{ bus.tipo }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <nav aria-label="...">
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-between">
                         <li class="page-item">
-                            <a class="page-link" @click="previousPage()">Previous</a>
+                            <button type="button" class="btn btn-primary" @click="previousPage()">Anterior</button>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" @click="nextPage()">Next</a>
+                            <button type="button" class="btn btn-primary" @click="nextPage()">Próximo</button>
                         </li>
                     </ul>
                 </nav>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
             </div>
         </div>
@@ -86,9 +82,8 @@ export default {
                 }
             })
         },
-        getMapsLink(name) {
-            this.$refs.push('www.google.com.br/maps/place/' + name)
-            console.log(name)
+        goToMaps(name) {
+            window.location.href = `https://www.google.com.br/maps/search/${name.toLowerCase()}`
         }
     },
     created() {
