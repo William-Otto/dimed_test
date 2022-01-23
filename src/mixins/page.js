@@ -3,19 +3,17 @@ import { getPage } from '../services/lines'
 export default {
     methods: {
         nextPage() {
-            if (!this.next) {
-                return
-            }
+            this.loading = true
             getPage(this.next).then((res) => {
                 this.saveData(res)
+                this.loading = false
             });
         },
         previousPage() {
-            if (!this.prev) {
-                return
-            }
+            this.loading = true
             getPage(this.prev).then((res) => {
                 this.saveData(res)
+                this.loading = false
             });
         },
         saveData(res) {

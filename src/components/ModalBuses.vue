@@ -64,7 +64,10 @@
             >
               <use xlink:href="#info-fill" />
             </svg>
-            <div>Clique sob o nome de uma linha para saber a localização no Google Maps</div>
+            <div>
+              Clique sob o nome de uma linha para saber a localização no Google
+              Maps
+            </div>
           </div>
           <table class="table table-striped">
             <thead>
@@ -77,12 +80,18 @@
             <tbody>
               <tr v-for="bus in filteredBuses" :key="bus._id">
                 <td>
-                  <a @click="goToMaps(bus.nome)" type="button">{{
-                    bus.nome || '*Erro na busca*'
-                  }}</a>
+                  <a
+                    v-if="bus.nome"
+                    @click="goToMaps(bus.nome)"
+                    type="button"
+                    >{{ bus.nome }}</a
+                  >
+                  <a v-else class="text-danger">Nome não disponibilizado</a>
                 </td>
-                <td>{{ bus.linha }}</td>
-                <td>{{ bus.tipo }}</td>
+                <td v-if="bus.linha">{{ bus.linha }}</td>
+                <td v-else class="text-danger">Linha não disponibilizada</td>
+                <td v-if="bus.tipo">{{ bus.tipo }}</td>
+                <td v-else class="text-danger">Tipo não disponibilizado</td>
               </tr>
             </tbody>
           </table>
@@ -90,20 +99,40 @@
             <ul class="pagination justify-content-between">
               <li class="page-item">
                 <button
+                  v-if="loading == false"
                   type="button"
                   class="btn btn-primary"
                   @click="previousPage()"
+                  :disabled="prev == ''"
                 >
                   Anterior
+                </button>
+                <button v-else class="btn btn-primary" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Loading...</span>
                 </button>
               </li>
               <li class="page-item">
                 <button
+                  v-if="loading == false"
                   type="button"
                   class="btn btn-primary"
                   @click="nextPage()"
+                  :disabled="next == ''"
                 >
                   Próximo
+                </button>
+                <button v-else class="btn btn-primary" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Loading...</span>
                 </button>
               </li>
             </ul>

@@ -1,9 +1,11 @@
 <template>
-  <div class="main">
-    <Header />
-    <Main />
-    <Footer />
-  </div>
+  <body>
+    <div class="bg-light">
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  </body>
 </template>
 
 <script>
@@ -22,4 +24,9 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
 </style>

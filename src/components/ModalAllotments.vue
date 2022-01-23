@@ -37,10 +37,20 @@
             </thead>
             <tbody>
               <tr v-for="allotment in filteredAllotments" :key="allotment._id">
-                <td>{{ allotment.sentido }}</td>
-                <td>{{ allotment.linha }}</td>
-                <td>{{ allotment.horario_largada }}</td>
-                <td>{{ allotment.adaptado_deficiente }}</td>
+                <td v-if="allotment.sentido">{{ allotment.sentido }}</td>
+                <td v-else class="text-danger">Sentido não disponibilizado</td>
+                <td v-if="allotment.linha">{{ allotment.linha }}</td>
+                <td v-else class="text-danger">Linha não disponibilizada</td>
+                <td v-if="allotment.horario_largada">
+                  {{ allotment.horario_largada }}
+                </td>
+                <td v-else class="text-danger">Saída não disponibilizada</td>
+                <td v-if="allotment.adaptado_deficiente">
+                  {{ allotment.adaptado_deficiente }}
+                </td>
+                <td v-else class="text-danger">
+                  Informação não disponibilizada
+                </td>
               </tr>
             </tbody>
           </table>
@@ -48,20 +58,40 @@
             <ul class="pagination justify-content-between">
               <li class="page-item">
                 <button
+                  v-if="loading == false"
                   type="button"
                   class="btn btn-primary"
                   @click="previousPage()"
+                  :disabled="prev == ''"
                 >
                   Anterior
+                </button>
+                <button v-else class="btn btn-primary" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Loading...</span>
                 </button>
               </li>
               <li class="page-item">
                 <button
+                  v-if="loading == false"
                   type="button"
                   class="btn btn-primary"
                   @click="nextPage()"
+                  :disabled="next == ''"
                 >
                   Próximo
+                </button>
+                <button v-else class="btn btn-primary" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Loading...</span>
                 </button>
               </li>
             </ul>
@@ -85,6 +115,7 @@ export default {
       search: "",
       next: "",
       prev: "",
+      loading: false,
     };
   },
   computed: {
