@@ -1,11 +1,7 @@
 <template>
-  <body>
-    <div class="bg-light">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
-  </body>
+  <Header />
+  <Main />
+  <Footer />
 </template>
 
 <script>
@@ -24,9 +20,13 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0px;
-  padding: 0px;
+Footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+Header {
+  top: 0;
   width: 100%;
 }
 </style>

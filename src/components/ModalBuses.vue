@@ -69,6 +69,16 @@
               Maps
             </div>
           </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#allotmentsModal"
+            >
+              Visualizar Linhas de Lotação
+            </button>
+          </div>
           <table class="table table-striped">
             <thead>
               <tr>
