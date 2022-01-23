@@ -26,7 +26,7 @@
             placeholder="Pesquise pelo sentido"
           />
           <datalist id="datalistOptions"> </datalist>
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Sentido</th>

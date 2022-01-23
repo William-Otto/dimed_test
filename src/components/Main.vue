@@ -1,6 +1,8 @@
 <template>
   <main>
     <div class="container marketing">
+      <ModalBuses />
+      <ModalAllotments />
       <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
           <img
@@ -41,8 +43,6 @@
             </button>
           </div>
         </div>
-        <ModalBuses />
-        <ModalAllotments />
       </div>
     </div>
   </main>
